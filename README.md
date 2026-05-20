@@ -5,18 +5,21 @@ Progetto sviluppato per l'esame di Laboratorio di informatica, finalizzato alla 
 l'applicazione permette di amministrare richieste di supporto tecnico, gestire tecnici specializzati, assegnare interventi e generare report dettagliati sull'operatività del sistema.
 
 ## Componenti del gruppo
-- Omar Saafi
-- Martin Vulpio
-- Loris Panaro
+| Nome | Cognome | Matricola | Corso |
+|------|---------|-----------|-------|
+| Omar | Saafi | 853622 | NZ |
+| Martin | Vulpio | 862992 | NZ |
+| Loris | Panaro | | NZ |
 
 ## Suddivisione del lavoro
 
 ## Obiettivi del progetto
+Il progetto ha lo scopo di realizzare un sistema completo per la gestione delle richieste di un centro di assistenza tecnica, con i seguenti obiettivi:
 - Gestione completa delle richieste di assistenza tecnica
 - Assegnazione delle richieste ai tecnici specializzati
 - Monitoraggio dello stato delle richieste
 - Analisi statistiche e generazione di report avanzati
-- Salvataggio dei dati tramite file ``` .txt ```
+- Salvataggio dei dati tramite file (``` .txt ```)
 - Dashboard HTML per la consultazione web dei dati generati
 
 ## Funzionalità Implementate
@@ -71,25 +74,21 @@ l'applicazione permette di amministrare richieste di supporto tecnico, gestire t
 - [x] Statistiche e report nella dashboard
 
 ## Tecnologie utilizzate
-- Linguaggio C
-- HTML per la dashboard di consultazione dati web
-- Claude AI-assisted design
+| Tecnologia | Utilizzo |
+|------------|----------|
+| C | Linguaggio principale del progetto |
+| GCC | Compilatore |
+| File .txt | Persistenza dei dati |
+| HTML/CSS | Dashboard per la consultazione web |
 
-## Supporto alla progettazione
-Claude AI-assisted design per:
-- schermata iniziale;
-- menu principale numerato;
-- sottomenu per area funzionale;
-- accesso alle operazioni principali;
-- area gestione richieste;
-- area ricerca e filtri;
-- area ordinamenti;
-- area report;
-- area salvataggio;
-- area statistiche;
-- area consultazione dati web
-- messaggi di errore comprensibili;
-- messaggi di conferma;
+## Supporto alla Progettazione
+Durante lo sviluppo del progetto è stato utilizzato il supporto
+dell'intelligenza artificiale (Claude - Anthropic) per:
+- Progettazione della schermata iniziale e struttura del menu testuale
+- Organizzazione delle schermate e dei sottomenu
+- Definizione dei messaggi all'utente (errori, conferme riepilogo)
+- Progettazione e sviluppo del file `dashboard.html`
+- Testi descrittivi e riepilogativi dei risultati nei report
 
 ## Struttura del progetto
 
