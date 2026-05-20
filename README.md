@@ -9,7 +9,7 @@ l'applicazione permette di amministrare richieste di supporto tecnico, gestire t
 |------|---------|-----------|-------|
 | Omar | Saafi | 853622 | NZ |
 | Martin | Vulpio | 862992 | NZ |
-| Loris | Panaro | | NZ |
+| Loris | Panaro | 854237 | | NZ |
 
 ## Suddivisione del Lavoro
 | Studente | Ruolo | Responsabilità |
