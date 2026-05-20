@@ -117,7 +117,22 @@ dell'intelligenza artificiale (Claude - Anthropic) per:
 
 ## Struttura del progetto
 
-## Come compilare il progetto
+## Compilazione ed Esecuzione
+### Requisiti
+- gcc installato sul sistema
+- Sistema operativo: Linux / macOS / Windows (con MinGW)
+
+### Compilazione
+Dalla cartella principale del progetto:
+
+```bash
+gcc src/main.c src/richieste.c src/tecnici.c src/report.c -o assistenza
+```
+
+### Esecuzione
+```bash
+./assistenza
+```
 
 ## Formato dei file di dati
 
