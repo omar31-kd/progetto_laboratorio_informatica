@@ -133,7 +133,7 @@ progetto_laboratorio_informatica/
 ├── docs/                       → documentazione e web
 │   └── dashboard.html
 ├── traccia/                    → traccia del progetto
-│   └── Traccia.pdf
+│   └── Gruppo3.pdf
 ├── .gitignore
 └── README.md
 ```
