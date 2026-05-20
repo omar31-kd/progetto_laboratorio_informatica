@@ -116,6 +116,33 @@ dell'intelligenza artificiale (Claude - Anthropic) per:
 - Testi descrittivi e riepilogativi dei risultati nei report
 
 ## Struttura del progetto
+Sistema gestionale testuale scritto in C per la gestione delle richieste di un centro di assistenza tecnica. Permette di gestire richieste e tecnici tramite file di testo, con generazione automatica di report e pagina web di riepilogo.
+
+### Albero delle directory
+```
+progetto_laboratorio_informatica/
+├── src/                        → codice sorgente
+│   ├── structs.h
+│   ├── richieste.h / richieste.c
+│   ├── tecnici.h / tecnici.c
+│   ├── report.h / report.c
+│   └── main.c
+├── data/                       → dati del programma
+│   ├── richieste.txt
+│   └── tecnici.txt
+├── docs/                       → documentazione e web
+│   └── dashboard.html
+├── traccia/                    → traccia del progetto
+│   └── Traccia.pdf
+├── .gitignore
+└── README.md
+```
+### src/
+
+### data/
+
+### docs/
+
 
 ## Compilazione ed Esecuzione
 ### Requisiti
