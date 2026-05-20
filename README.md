@@ -11,7 +11,32 @@ l'applicazione permette di amministrare richieste di supporto tecnico, gestire t
 | Martin | Vulpio | 862992 | NZ |
 | Loris | Panaro | | NZ |
 
-## Suddivisione del lavoro
+## Suddivisione del Lavoro
+| Studente | Ruolo | Responsabilità |
+|----------|-------|----------------|
+| Martin Vulpio | I/O File & Filtri | Caricamento/salvataggio file, inserimento e modifica richieste, filtri per stato/priorità/cliente, Report 1 |
+| Loris Panaro | UI/Menu & Ordinamenti | Schermata iniziale, menu e sottomenu, messaggi utente, inserimento/modifica tecnici, assegnazioni, ordinamenti, Report 2 |
+| Omar Saafi | Visualizzazione & Statistiche | Visualizzazione richieste e tecnici, ricerca, modifica assegnazioni, statistiche per dispositivo e priorità, Report 3 |
+
+### Dettaglio per Fasi
+| Fase | Attività | Responsabile |
+|------|----------|--------------|
+| Fase 0 | Setup repository, strutture dati, file di esempio | Gruppo completo |
+| Fase 1 | I/O file (caricamento e salvataggio) | Martin Vulpio |
+| Fase 1 | Schermata iniziale, menu e messaggi | Loris Panaro |
+| Fase 1 | Visualizzazione richieste/tecnici, ricerca | Omar Saafi |
+| Fase 2 | Inserimento/modifica richieste, costo finale | Martin Vulpio |
+| Fase 2 | Inserimento/modifica tecnici, assegnazioni | Loris Panaro |
+| Fase 2 | Modifica assegnazioni, richieste non assegnate, suggerimento automatico | Omar Saafi |
+| Fase 3 | Filtri per stato, priorità, cliente | Martin Vulpio |
+| Fase 3 | Ordinamenti e statistiche per priorità | Loris Panaro |
+| Fase 3 | Statistiche per tipologia di dispositivo | Omar Saafi |
+| Fase 4 | Report 1 – Report generale richieste | Martin Vulpio |
+| Fase 4 | Report 2 – Report operativo richieste | Loris Panaro |
+| Fase 4 | Report 3 – Report tecnici e assegnazioni | Omar Saafi |
+| Fase 5 | Dashboard HTML | Gruppo completo |
+| Fase 6 | Testing e integrazione | Gruppo completo |
+| Fase 7 | Consegna finale e pulizia repository | Gruppo completo |
 
 ## Obiettivi del progetto
 Il progetto ha lo scopo di realizzare un sistema completo per la gestione delle richieste di un centro di assistenza tecnica, con i seguenti obiettivi:
