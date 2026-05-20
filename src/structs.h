@@ -1,3 +1,5 @@
+
+
 #ifndef STRUCTS_H
 #define STRUCTS_H
 
@@ -8,6 +10,19 @@
 #define MAX_CARATTERI_NOME 20
 #define MAX_CARATTERI_COGNOME 20
 
+/**
+ * @brief Struttura che rappresenta una richiesta di assistenza
+ * @param id_richiesta
+ * @param nome_cliente
+ * @param cognome_cliente
+ * @param tipologia_dispositivo
+ * @param descrizione_problema
+ * @param stato
+ * @param costo_stimato
+ * @param costo_finale
+ * @param data_apertura
+ * @param codice_tecnico_associato
+ */
 typedef struct
 {
     int id_richiesta;
@@ -23,6 +38,14 @@ typedef struct
     int codice_tecnico_associato;
 } Richiesta;
 
+/**
+ * @brief Struttura che rappresenta un tecnico
+ * @param id_tecnico
+ * @param nome_tecnico
+ * @param specializzazione
+ * @param richieste_assegnabili
+ * @param richieste_assegnate
+ */
 typedef struct
 {
     int id_tecnico;

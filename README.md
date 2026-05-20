@@ -143,7 +143,6 @@ progetto_laboratorio_informatica/
 
 ### docs/
 
-
 ## Compilazione ed Esecuzione
 ### Requisiti
 - gcc installato sul sistema
