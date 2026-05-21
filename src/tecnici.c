@@ -1,57 +1,66 @@
 #include <stdio.h>
 #include "tecnici.h"
 
-//FUNZIONE CARICA TECNICI
-void caricaTecnici(Tecnico tecnici[], int *nTecnici)
-{
-    FILE *fp = fopen("data/tecnici.txt", "r");
+/* Percorso del file dati tecnici */
+#define FILE_TECNICI "data/tecnici.txt"
 
-    if (fp == NULL)
-    {
-        printf("Errore apertura tecnici.txt\n");
+void caricaTecnici(tecnico_t tecnici[], int *nTecnici) {
+    FILE *fp = fopen(FILE_TECNICI, "r");
+    if (fp == NULL) {
+        printf("  [AVVISO] File '%s' non trovato. Si parte da zero.\n", FILE_TECNICI);
+        *nTecnici = 0;
         return;
     }
 
     *nTecnici = 0;
 
-    while (fscanf(fp,
-                  "%d;%19[^;];%19[^;];%99[^;];%d;%d\n",
-                  &tecnici[*nTecnici].id_tecnico,
-                  tecnici[*nTecnici].nome_tecnico,
-                  tecnici[*nTecnici].cognome_tecnico,
-                  tecnici[*nTecnici].specializzazione,
-                  &tecnici[*nTecnici].richieste_assegnabili,
-                  &tecnici[*nTecnici].richieste_assegnate) == 6)
-    {
+    while (*nTecnici < MAX_TECNICI) {
+        tecnico_t *t = &tecnici[*nTecnici];
+
+        int campi_letti = fscanf(fp,
+            "%d;"
+            "%29[^;];%29[^;];"
+            "%99[^;];"
+            "%d;%d\n",
+            &t->id_tecnico,
+            t->nome_tecnico,
+            t->cognome_tecnico,
+            t->specializzazione,
+            &t->richieste_assegnabili,
+            &t->richieste_assegnate);
+
+        if (campi_letti != 6) {
+            break; 
+        }
+
         (*nTecnici)++;
     }
 
     fclose(fp);
+    printf("  [OK] Caricati %d tecnici da '%s'.\n", *nTecnici, FILE_TECNICI);
 }
 
-
-//FUNZIONE SALVA TECNICI
-void salvaTecnici(Tecnico tecnici[], int nTecnici)
-{
-    FILE *fp = fopen("data/tecnici.txt", "w");
-
-    if (fp == NULL)
-    {
-        printf("Errore salvataggio tecnici.txt\n");
+void salvaTecnici(tecnico_t tecnici[], int nTecnici) {
+    FILE *fp = fopen(FILE_TECNICI, "w");
+    if (fp == NULL) {
+        printf("  [ERRORE] Impossibile aprire '%s' in scrittura.\n", FILE_TECNICI);
         return;
     }
 
-    for (int i = 0; i < nTecnici; i++)
-    {
+    int i;
+    for (i = 0; i < nTecnici; i++) {
+        tecnico_t *t = &tecnici[i];
+
         fprintf(fp,
-                "%d;%s;%s;%s;%d;%d\n",
-                tecnici[i].id_tecnico,
-                tecnici[i].nome_tecnico,
-                tecnici[i].cognome_tecnico,
-                tecnici[i].specializzazione,
-                tecnici[i].richieste_assegnabili,
-                tecnici[i].richieste_assegnate);
+            "%d;%s;%s;%s;%d;%d\n",
+            t->id_tecnico,
+            t->nome_tecnico,
+            t->cognome_tecnico,
+            t->specializzazione,
+            t->richieste_assegnabili,
+            t->richieste_assegnate);
     }
 
     fclose(fp);
+    printf("  [OK] Salvati %d tecnici su '%s'.\n", nTecnici, FILE_TECNICI);
 }
