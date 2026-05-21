@@ -50,6 +50,7 @@ typedef struct
 {
     int id_tecnico;
     char nome_tecnico[MAX_CARATTERI_NOME];
+    char cognome_tecnico[MAX_CARATTERI_COGNOME];
     char specializzazione[MAX_CARATTERI_TESTO_LUNGO];
     int richieste_assegnabili;
     int richieste_assegnate;
