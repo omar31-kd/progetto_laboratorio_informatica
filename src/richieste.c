@@ -1,67 +1,84 @@
 #include <stdio.h>
 #include "richieste.h"
 
-//FUNZIONE CARICA RICHIESTE
-void caricaRichieste(Richiesta richieste[], int *nRichieste)
-{
-    FILE *fp = fopen("data/richieste.txt", "r");
+/* Percorso del file dati richieste */
+#define FILE_RICHIESTE "data/richieste.txt"
 
-    if (fp == NULL)
-    {
-        printf("Errore apertura richieste.txt\n");
+/*
+ * Formato di ogni riga nel file:
+ * id;nome;cognome;dispositivo;problema;priorita;stato;
+ * costo_stimato;costo_finale;data_apertura;codice_tecnico
+ */
+
+void caricaRichieste(richiesta_t richieste[], int *nRichieste) {
+    FILE *fp = fopen(FILE_RICHIESTE, "r");
+    if (fp == NULL) {
+        printf("  [AVVISO] File '%s' non trovato. Si parte da zero.\n", FILE_RICHIESTE);
+        *nRichieste = 0;
         return;
     }
 
     *nRichieste = 0;
 
-    while (fscanf(fp,
-                  "%d;%19[^;];%19[^;];%99[^;];%99[^;];%29[^;];%29[^;];%f;%f;%29[^;];%d\n",
-                  &richieste[*nRichieste].id_richiesta,
-                  richieste[*nRichieste].nome_cliente,
-                  richieste[*nRichieste].cognome_cliente,
-                  richieste[*nRichieste].tipologia_dispositivo,
-                  richieste[*nRichieste].descrizione_problema,
-                  richieste[*nRichieste].priorita,
-                  richieste[*nRichieste].stato,
-                  &richieste[*nRichieste].costo_stimato,
-                  &richieste[*nRichieste].costo_finale,
-                  richieste[*nRichieste].data_apertura,
-                  &richieste[*nRichieste].codice_tecnico_associato) == 11)
-    {
+    while (*nRichieste < MAX_RICHIESTE) {
+        richiesta_t *r = &richieste[*nRichieste];
+
+        int campi_letti = fscanf(fp,
+            "%d;"
+            "%29[^;];%29[^;];"
+            "%99[^;];%99[^;];"
+            "%29[^;];%29[^;];"
+            "%f;%f;"
+            "%10[^;];%d\n",
+            &r->id_richiesta,
+            r->nome_cliente,
+            r->cognome_cliente,
+            r->tipologia_dispositivo,
+            r->descrizione_problema,
+            r->priorita,
+            r->stato,
+            &r->costo_stimato,
+            &r->costo_finale,
+            r->data_apertura,
+            &r->codice_tecnico_associato);
+
+        if (campi_letti != 11) {
+            break; /* fine file o riga malformata */
+        }
+
         (*nRichieste)++;
     }
 
     fclose(fp);
+    printf("  [OK] Caricate %d richieste da '%s'.\n", *nRichieste, FILE_RICHIESTE);
 }
 
-
-//FUNZIONE SALVA RICHIESTE
-void salvaRichieste(Richiesta richieste[], int nRichieste)
-{
-    FILE *fp = fopen("data/richieste.txt", "w");
-
-    if (fp == NULL)
-    {
-        printf("Errore salvataggio richieste.txt\n");
+void salvaRichieste(richiesta_t richieste[], int nRichieste) {
+    FILE *fp = fopen(FILE_RICHIESTE, "w");
+    if (fp == NULL) {
+        printf("  [ERRORE] Impossibile aprire '%s' in scrittura.\n", FILE_RICHIESTE);
         return;
     }
 
-    for (int i = 0; i < nRichieste; i++)
-    {
+    int i;
+    for (i = 0; i < nRichieste; i++) {
+        richiesta_t *r = &richieste[i];
+
         fprintf(fp,
-                "%d;%s;%s;%s;%s;%s;%s;%.2f;%.2f;%s;%d\n",
-                richieste[i].id_richiesta,
-                richieste[i].nome_cliente,
-                richieste[i].cognome_cliente,
-                richieste[i].tipologia_dispositivo,
-                richieste[i].descrizione_problema,
-                richieste[i].priorita,
-                richieste[i].stato,
-                richieste[i].costo_stimato,
-                richieste[i].costo_finale,
-                richieste[i].data_apertura,
-                richieste[i].codice_tecnico_associato);
+            "%d;%s;%s;%s;%s;%s;%s;%.2f;%.2f;%s;%d\n",
+            r->id_richiesta,
+            r->nome_cliente,
+            r->cognome_cliente,
+            r->tipologia_dispositivo,
+            r->descrizione_problema,
+            r->priorita,
+            r->stato,
+            r->costo_stimato,
+            r->costo_finale,
+            r->data_apertura,
+            r->codice_tecnico_associato);
     }
 
     fclose(fp);
+    printf("  [OK] Salvate %d richieste su '%s'.\n", nRichieste, FILE_RICHIESTE);
 }
